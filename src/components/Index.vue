@@ -1,66 +1,48 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    
-<div name="post1">
-    <table cellpadding="0" cellspacing="0" class="center">
-        <tr>
-          <td style="width: 150px">testuser1</td>
-        </tr>
-
-        <tr>
-          <td style="width: 150px">Testpost</td>
-        </tr>
-
-        <tr>
-          <td style="width: 150px"><iframe src="https://open.spotify.com/embed/track/2E7W1X4maFFcjHrVrFA7Vs?utm_source=generator" width="250" height="80" allowtransparency="true" allow="encrypted-media"></iframe> </td>
-        </tr>
-    </table>
-</div> <br/>
-
-
-
-<div name="post2">
-    <table cellpadding="0" cellspacing="0" class="center">
-        <tr>
-          <td style="width: 150px">testuser2</td>
-        </tr>
-
-        <tr>
-          <td style="width: 150px">Testpost2</td>
-        </tr>
-
-        <tr>
-          <td style="width: 150px"><iframe src="https://open.spotify.com/embed/track/37y3r1updgfP7Jb2JBuYe6?utm_source=generator" width="250" height="80" allowtransparency="true" allow="encrypted-media"></iframe> </td>
-        </tr>
-    </table>
-</div>
-</div>
+    <div id="login">
+        <h1>Login</h1>
+        <input type="text" name="username" v-model="input.username" placeholder="Username" style="margin-right:20px;"/> 
+        <input type="password" name="password" v-model="input.password" placeholder="Password" /> <br/>
+        <button type="button" v-on:click="login()" style="margin-top:20">Login</button>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'Index-Page',
-  props: {
-    msg: String
-  }
-}
+    export default {
+        name: 'Login-Page',
+        data() {
+            return {
+                input: {
+                    username: "",
+                    password: ""
+                }
+            }
+        },
+        methods: {
+            login() {
+                if(this.input.username != "" && this.input.password != "") {
+                    //if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+                    if(this.input.username == "test1" && this.input.password == "test1") {
+                        this.$emit("authenticated", true);
+                        this.$router.replace({ name: "secure" });
+                    } else {
+                        console.log("The username and / or password is incorrect");
+                    }
+                } else {
+                    console.log("A username and password must be present");
+                }
+            }
+        }
+    }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+    #login {
+        width: 500px;
+        border: 1px solid #CCCCCC;
+        background-color: #FFFFFF;
+        margin: auto;
+        margin-top: 200px;
+        padding: 20px;
+    }
 </style>
