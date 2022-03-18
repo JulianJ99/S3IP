@@ -1,13 +1,16 @@
 <template>
+  <nav-bar/>
   <Index msg="Spotify Project"/>
+
 </template>
 
 <script>
 import Index from './components/Index.vue'
-
+import NavBar from "./components/NavBar.vue";
 export default {
   name: 'App',
   components: {
+    NavBar,
     Index
   }
 }
