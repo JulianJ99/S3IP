@@ -35,14 +35,24 @@
           <td style="width: 150px"><iframe src="https://open.spotify.com/embed/track/37y3r1updgfP7Jb2JBuYe6?utm_source=generator" width="250" height="80" allowtransparency="true" allow="encrypted-media"></iframe> </td>
         </tr>
     </table>
+
+  <div>
+    <b-row>
+      <data-table></data-table>
+    </b-row>
+  </div>
+
 </div>
 </div>
 </template>
 
 <script>
-
+import DataTable from "@/components/DataTable.vue";
 export default {
   name: 'Index-Page',
+  components:{
+    DataTable,
+  },
   props: {
     msg: String
   }
