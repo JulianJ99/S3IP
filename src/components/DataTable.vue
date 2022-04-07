@@ -22,7 +22,7 @@
                   @click="showCreateModal"
                 >
                   <b-icon-plus class="text-white"></b-icon-plus>
-                  <span class="h6 text-white">New Customer</span>
+                  <span class="h6 text-white">New Post</span>
                 </b-button>
               </b-col>
             </b-row>
@@ -41,13 +41,7 @@
                 `${data.item.contact_firstname} ${data.item.contact_lastname}`
               }}
             </template>
-            <template #cell(customer_status)="data">
 
-              <b-icon-bookmark-x-fill
-                variant="danger"
-                v-else
-              ></b-icon-bookmark-x-fill>
-            </template>
             <template #cell(actions)="data">
               <b-row>
                 <b-col cols="7">
@@ -71,65 +65,65 @@
       </b-card>
     </b-row>
 
-    <!-- Modal for adding new customers -->
+    <!-- Modal for adding new posts -->
     <b-modal
-      ref="create-customer-modal"
+      ref="create-post-modal"
       size="xl"
       hide-footer
-      title="New Customer"
+      title="New post"
     >
-      <create-customer-form
+      <create-post-form
         @closeCreateModal="closeCreateModal"
-        @reloadDataTable="getCustomerData"
+        @reloadDataTable="getPostData"
         @showSuccessAlert="showAlertCreate"
-      ></create-customer-form>
+      ></create-post-form>
     </b-modal>
 
-    <!-- Modal for updating customers -->
+    <!-- Modal for updating posts -->
     <b-modal
-      ref="edit-customer-modal"
+      ref="edit-post-modal"
       size="xl"
       hide-footer
-      title="Edit Customer"
+      title="Edit post"
     >
-      <edit-customer-form
+      <edit-post-form
         @closeEditModal="closeEditModal"
-        @reloadDataTable="getCustomerData"
+        @reloadDataTable="getPostData"
         @showSuccessAlert="showAlertUpdate"
-        :customerId="customerId"
-      ></edit-customer-form>
+        :Id="Id"
+      ></edit-Post-form>
     </b-modal>
 
-    <!-- Delete Customer Modal -->
+    <!-- Delete Post Modal -->
     <b-modal
-      ref="delete-customer-modal"
+      ref="delete-post-modal"
       size="md"
       hide-footer
       title="Confirm Deletion"
     >
-      <delete-customer-modal
+      <delete-post-modal
         @closeDeleteModal="closeDeleteModal"
-        @reloadDataTable="getCustomerData"
+        @reloadDataTable="getPostData"
         @showDeleteAlert="showDeleteSuccessModal"
-        :customerId="customerId"
-      ></delete-customer-modal>
+        :postId="postId"
+      ></delete-post-modal>
     </b-modal>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import CustomerOverview from "@/components/CustomerOverview.vue";
-import CreateCustomerForm from "@/components/CreateCustomerForm.vue";
-import EditCustomerForm from "@/components/EditCustomerForm.vue";
-import DeleteCustomerModal from "@/components/DeleteCustomerModal.vue";
+import PostOverview from "@/components/PostOverview.vue";
+import CreatePostForm from "@/components/CreatePostForm.vue";
+import EditPostForm from "@/components/EditPostForm.vue";
+import DeletePostModal from "@/components/DeletePostModal.vue";
 
 export default {
   components: {
-    CustomerOverview,
-    CreateCustomerForm,
-    EditCustomerForm,
-    DeleteCustomerModal,
+    PostOverview,
+    CreatePostForm,
+    EditPostForm,
+    DeletePostModal,
   },
   data() {
     return {
@@ -151,15 +145,15 @@ export default {
           sortable: false,
         },
         {
-          key: "customer_status",
-          label: "Customer Status",
+          key: "post_status",
+          label: "Post Status",
           sortable: false,
         },
         "actions",
       ],
       items: [],
-      numberOfCustomers: 0,
-      customerId: 0,
+      numberOfPosts: 0,
+      postId: 0,
       companySearchTerm: "",
       tableHeader: "",
       showSuccessAlert: false,
@@ -167,52 +161,52 @@ export default {
     };
   },
   mounted() {
-    this.getCustomerData();
+    this.getPostData();
   },
   methods: {
     showCreateModal() {
-      this.$refs["create-customer-modal"].show();
+      this.$refs["create-post-modal"].show();
     },
     closeCreateModal() {
-      this.$refs["create-customer-modal"].hide();
+      this.$refs["create-post-modal"].hide();
     },
-    getCustomerData() {
+    getPostData() {
       axios
-        .get("http://localhost:3000/customers/")
+        .get("http://localhost:8080/posts/")
         .then((response) => {
-          this.tableHeader = "Total Customer";
+          this.tableHeader = "All Posts";
           this.items = response.data;
-          this.numberOfCustomers = response.data.length;
+          this.numberOfPosts = response.data.length;
         })
         .catch((error) => {
           console.log(error);
         });
     },
     getRowData(id) {
-      this.$refs["edit-customer-modal"].show();
-      this.customerId = id;
+      this.$refs["edit-post-modal"].show();
+      this.Id = id;
     },
     closeEditModal() {
-      this.$refs["edit-customer-modal"].hide();
+      this.$refs["edit-post-modal"].hide();
     },
     showAlertCreate() {
       this.showSuccessAlert = true;
-      this.alertMessage = "Customer was created successfully!";
+      this.alertMessage = "Post was created successfully!";
     },
     showAlertUpdate() {
       this.showSuccessAlert = true;
-      this.alertMessage = "Customer was updated successfully";
+      this.alertMessage = "Post was updated successfully";
     },
     showDeleteModal(id) {
-      this.$refs["delete-customer-modal"].show();
-      this.customerId = id;
+      this.$refs["delete-post-modal"].show();
+      this.postId = id;
     },
     closeDeleteModal() {
-      this.$refs["delete-customer-modal"].hide();
+      this.$refs["delete-post-modal"].hide();
     },
     showDeleteSuccessModal() {
       this.showSuccessAlert = true;
-      this.alertMessage = "Customer was deleted successfully!";
+      this.alertMessage = "Post was deleted successfully!";
     },
   },
 };
