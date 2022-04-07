@@ -30,7 +30,7 @@ import axios from "axios";
 export default {
   name: "DeletePostModal",
   props: {
-    Id: Number,
+    id: Number,
   },
   methods: {
     triggerClose() {
@@ -38,7 +38,7 @@ export default {
     },
     removePostFromData() {
       axios
-        .delete(`http://localhost:8080/posts/${this.Id}`)
+        .delete(`http://localhost:8080/posts/${this.id}`)
         .then(() => {
           this.$emit("reloadDataTable");
           this.$emit("showDeleteAlert");

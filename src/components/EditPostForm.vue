@@ -107,7 +107,7 @@ export default {
     },
     getCusomterByID() {
       axios
-        .get(`http://localhost:8080/posts/${this.Id}`)
+        .get(`http://localhost:8080/posts/${this.id}`)
         .then((response) => {
           this.post = response.data;
         })

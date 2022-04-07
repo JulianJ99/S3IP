@@ -130,23 +130,18 @@ export default {
 
       fields: [
         {
-          key: "company_name",
-          label: "Company Name",
+          key: "id",
+          label: "id",
           sortable: false,
         },
         {
-          key: "contact_name",
-          label: "Contact Name",
+          key: "post",
+          label: "post",
           sortable: false,
         },
         {
-          key: "contact_email",
-          label: "Contact E-Mail",
-          sortable: false,
-        },
-        {
-          key: "post_status",
-          label: "Post Status",
+          key: "link",
+          label: "link",
           sortable: false,
         },
         "actions",
