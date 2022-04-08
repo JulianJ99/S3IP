@@ -8,7 +8,6 @@
     <b-row>
       <post-overview
         :totalPosts="numberOfPosts"
-        @totalPostsIsActive="setFilterTotalIsActive"
       ></post-overview>
     </b-row>
     <b-row class="mt-3">

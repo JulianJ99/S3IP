@@ -1,7 +1,6 @@
 <template>
   <nav-bar/>
   <Index msg="Spotify Project"/>
-
 </template>
 
 <script>
