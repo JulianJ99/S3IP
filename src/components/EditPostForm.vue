@@ -1,72 +1,40 @@
 <template>
   <b-form class="mt-3">
-    <b-row>
-      <b-row>
-        <h4 class="text-secondary">Contact Details</h4>
-      </b-row>
+
+     <b-row>
       <b-col cols="6">
-        <b-form-group id="first-name" label="First Name" label-for="first-name">
+        <b-form-group id="id" label="Id" label-for="id">
           <b-form-input
-            id="first-name"
+            id="id"
             type="text"
-            placeholder="First Name"
-            v-model="post.contact_firstname"
-          ></b-form-input>
-        </b-form-group>
-      </b-col>
-      <b-col cols="6">
-        <b-form-group id="last-name" label="Last Name" label-for="last-name">
-          <b-form-input
-            id="last-name"
-            type="text"
-            placeholder="Last Name"
-            v-model="post.contact_lastname"
+            placeholder=""
+            v-model="post.id"
           ></b-form-input>
         </b-form-group>
       </b-col>
     </b-row>
+
     <b-row class="mt-3">
       <b-col cols="6">
-        <b-form-group id="email" label="E-Mail" label-for="email">
+        <b-form-group id="post" label="Post" label-for="post">
           <b-form-input
-            id="email"
-            type="email"
-            placeholder="example@crm.com"
-            v-model="post.contact_email"
-          ></b-form-input>
-        </b-form-group>
-      </b-col>
-    </b-row>
-    <b-row class="mt-5">
-      <h4 class="text-secondary">Company Details</h4>
-    </b-row>
-    <b-row>
-      <b-col cols="4">
-        <b-form-group
-          id="company_name"
-          label="Company Name"
-          label-for="company_name"
-        >
-          <b-form-input
-            id="company_name"
+            id="post"
             type="text"
-            placeholder="XYZ Industries"
-            v-model="post.company_name"
+            placeholder="Placeholder text post"
+            v-model="post.post"
           ></b-form-input>
         </b-form-group>
       </b-col>
     </b-row>
+
     <b-row>
       <b-col cols="4">
-        <b-form-group
-          id="acquired_on"
-          label="Acquired On"
-          label-for="acquired_on"
-        >
+        <b-form-group id="link" label="Link" label-for="link">
           <b-form-input
-            id="acquired_on"
-            type="date"
-            v-model="post.acquired_on"
+            id="link"
+            type="text"
+            placeholder="https://open.spotify.com/embed/track/3H3cOQ6LBLSvmcaV7QkZEu?utm_source=generator"
+            v-model="post.company_name"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -105,7 +73,7 @@ export default {
     triggerClose() {
       this.$emit("closeEditModal");
     },
-    getCusomterByID() {
+    getPostByID() {
       axios
         .get(`http://localhost:8080/posts/${this.id}`)
         .then((response) => {
