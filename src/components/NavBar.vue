@@ -7,7 +7,7 @@
               >Login</button>
             </li>
 
-            
+            <li class="item dropdown" v-if="isAuthenticated">
               <a
                 class="link dropdown-toggle"
                 href="#"
@@ -22,25 +22,31 @@
                 />
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header">{{ user.name }}</div> <br/>
+                <div class="dropdown-header">{{ user.name }}</div>
                 <router-link to="/profile" class="dropdown-item dropdown-profile">
-                  <font-awesome-icon class="mr-3" icon="user" />Profile <br/>
+                  <font-awesome-icon class="mr-3" icon="user" />Profile
                 </router-link>
                 <a id="qsLogoutBtn" href="#" class="dropdown-item" @click.prevent="logout">
                   <font-awesome-icon class="mr-3" icon="power-off" />Log out
                 </a>
               </div>
-            
+            </li>
+
+          TestLoginMessage <br />
 </template>
+
 
 <script>
 import { useAuth0 } from '@auth0/auth0-vue';
 
 export default {
-  name: "NavBar",
+  name: "LoginComponent",
   setup() {
     const { isAuthenticated, isLoading, user, loginWithRedirect, logout } = useAuth0();
     return {
+      isAuthenticated,
+      isLoading,
+      user,
       login: () => {
         loginWithRedirect();
       },
@@ -48,17 +54,15 @@ export default {
         logout({
           returnTo: window.location.origin
         });
-      },
-      isAuthenticated,
-      isLoading,
-      user,
+      }
     }
   }
 };
 </script>
 
+
 <style>
-#mobileAuthNavBar {
+#mobileAuthBar {
   min-height: 125px;
   justify-content: space-between;
 }
