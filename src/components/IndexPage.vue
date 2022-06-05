@@ -1,5 +1,6 @@
 <template>
 
+
   <div class="hello">
     <h1>{{ msg }}</h1>
     
@@ -47,16 +48,7 @@
 </template>
 
 <script>
-import DataTable from "@/components/DataTable.vue";
-export default {
-  name: 'Index-Page',
-  components:{
-    DataTable,
-  },
-  props: {
-    msg: String
-  }
-  };
+
 
 
 </script>
