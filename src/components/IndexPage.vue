@@ -1,9 +1,10 @@
 <template>
 
-
   <div class="hello">
     <h1>{{ msg }}</h1>
     
+    <button @click="fetchtest"></button>
+
 <div name="post1">
     <table cellpadding="0" cellspacing="0" class="center">
         <tr>
@@ -48,6 +49,15 @@
 </template>
 
 <script>
+export default{
+
+methods:{
+fetchtest(){
+fetch("http://localhost:8081/api/menu/posts/GetAll")
+.then(console.log("test"));
+}
+}
+}
 
 
 
