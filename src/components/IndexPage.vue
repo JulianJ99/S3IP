@@ -51,12 +51,15 @@
 <script>
 export default{
 
-methods:{
-fetchtest(){
-fetch("http://localhost:8081/api/menu/posts/GetAll")
-.then(console.log("test"));
-}
-}
+  methods:{
+
+    fetchtest(){
+      fetch("http://localhost:8081/api/posts")
+        .then(res => res.json())
+        .then((result)=> 
+        {console.log(result)} )
+    }
+  }
 }
 
 
