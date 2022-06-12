@@ -1,6 +1,6 @@
 <template>
 
-  <div class="submit-form">
+  <div class="submit-form" v-if="isAuthenticated">
 
     <div v-if="!submitted">
       <div class="form-group">
@@ -27,30 +27,6 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          required
-          v-model="post.username"
-          name="username"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="userimage">Userimage</label>
-        <input
-          type="text"
-          class="form-control"
-          id="userimage"
-          required
-          v-model="post.userimage"
-          name="userimage"
-        />
-      </div>
-
       <button @click="savePost" class="btn btn-success">Submit</button>
     </div>
 
@@ -60,11 +36,20 @@
     </div>
   </div>
 </template>
+
 <script>
 import PostDataService from "../services/PostsDataServices.js";
+import { useAuth0 } from '@auth0/auth0-vue';
 export default {
+  setup(){
+  const { user, isAuthenticated } = useAuth0();
+  return {
+      user, isAuthenticated
+    }
+  },
   name: "add-post",
   data() {
+
     return {
       post: {
         id: null,
@@ -75,14 +60,17 @@ export default {
       },
       submitted: false
     };
+
   },
+
   methods: {
+
     savePost() {
       var data = {
         post: this.post.post,
         song: this.post.song,
-        username: this.post.username,
-        userimage: this.post.userimage,
+        username: this.user.name,
+        userimage: this.user.picture,
       };
       PostDataService.create(data)
         .then(response => {
@@ -99,6 +87,7 @@ export default {
       this.submitted = false;
       this.post = {};
     }
+
   }
 };
 </script>

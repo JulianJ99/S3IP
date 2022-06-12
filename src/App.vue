@@ -13,7 +13,7 @@ export default {
   components: {
     NavBar,
     IndexPage,
-    AddPost
+    AddPost,
   }
 }
 

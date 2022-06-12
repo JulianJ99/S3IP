@@ -1,8 +1,4 @@
 <template>
-
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    
     <button @click="fetchtest"></button>
 
 <div name="post1">
@@ -45,7 +41,7 @@
   </div>
 
 </div>
-</div>
+
 </template>
 
 <script>

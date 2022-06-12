@@ -2,8 +2,10 @@ const webpack = require("webpack");
 
 module.exports = {
   devServer: {
-    port: 8080
+    proxy: "http://localhost:8081"
+
   },
+
   configureWebpack: {
     plugins: [
       new webpack.ProvidePlugin({

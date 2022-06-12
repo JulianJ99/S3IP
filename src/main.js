@@ -5,6 +5,10 @@ import "highlight.js/styles/github.css";
 import { domain, clientId as client_id } from "./auth_config.json";
 
 const app = createApp(App);
+const cors = require("cors");
+cors({
+  origin: "http://localhost:8080",
+})
 
 app.config.productionTip = false;
 
