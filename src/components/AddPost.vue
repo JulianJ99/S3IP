@@ -66,7 +66,12 @@ export default {
   methods: {
 
     savePost() {
-      var data = {
+      if(this.post.post === "" || this.post.song === ""){
+        console.log("no.")
+        alert("Post or Song is empty")
+      }
+      else{
+        var data = {
         post: this.post.post,
         song: this.post.song,
         username: this.user.name,
@@ -77,10 +82,13 @@ export default {
           this.post.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
+          location.reload();
         })
         .catch(e => {
           console.log(e);
         });
+      }
+
     },
     
     newPost() {
