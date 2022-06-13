@@ -1,18 +1,21 @@
 <template>
   <nav-bar/>
   <IndexPage msg="Spotify Project"/>
+  <PostList/>
   <AddPost/>
 </template>
 
 <script>
 import IndexPage from './components/IndexPage.vue'
 import NavBar from "./components/NavBar.vue"
+import PostList from "./components/PostList.vue"
 import AddPost from "./components/AddPost.vue"
 export default {
   name: 'App',
   components: {
     NavBar,
     IndexPage,
+    PostList,
     AddPost,
   }
 }
