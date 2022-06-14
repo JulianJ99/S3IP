@@ -32,7 +32,7 @@
               </div>
             </li>
 
-          TestLoginMessage <br />
+          <br />
 </template>
 
 
