@@ -1,9 +1,11 @@
 <template>
     <ul v-for="post in posts" :key="post.id">
-    <th>
 
-    </th>
-        <table cellpadding="0" cellspacing="0" class="center">
+        <table cellpadding="0" cellspacing="0" class="center" aria-describedby="Table for post from database">
+          
+        <th>
+
+        </th>
         <tr>
           <td style="width: 150px">{{post.username}}</td>
         </tr>
@@ -18,7 +20,7 @@
 
         <tr>
           <td style="width: 150px">
-            <iframe :src=post.song width="250" height="80" allowtransparency="true" allow="encrypted-media" title="spotify link"></iframe>
+            <iframe :src=post.song width="250" height="80" allow="encrypted-media" title="spotify link"></iframe>
           </td>
         </tr>
     </table>

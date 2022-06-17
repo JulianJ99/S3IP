@@ -1,5 +1,5 @@
 <template>
-          <ul>
+          <ul style="list-style-type: none;">
             <li v-if="!isAuthenticated && !isLoading" class="item">
               <button
                 id="qsLoginBtn"
@@ -9,19 +9,14 @@
             </li>
 
             <li class="item dropdown" v-if="isAuthenticated">
-              <a
-                class="link dropdown-toggle"
-                href="#"
-                id="profileDropDown"
-                data-toggle="dropdown"
-              >
+
                 <img
                   :src="user.picture"
                   alt="User's profile picture"
                   class="user-profile rounded-circle"
                   width="50"
                 />
-              </a>
+              
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">{{ user.name }}</div>
                 <a id="qsLogoutBtn" href="#" class="dropdown-item" @click.prevent="logout">
@@ -63,5 +58,8 @@ export default {
 #mobileAuthBar {
   min-height: 125px;
   justify-content: space-between;
+}
+.list{
+    list-style-type: none;
 }
 </style>
