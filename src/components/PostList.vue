@@ -20,7 +20,7 @@
 
         <tr>
           <td style="width: 150px">
-            <iframe :src=post.song width="250" height="80" allow="encrypted-media" title="spotify link"></iframe>
+            <iframe :src=post.song width="250" height="80"  allowtransparency="true" allow="encrypted-media" title="spotify link"></iframe>
           </td>
         </tr>
     </table>
