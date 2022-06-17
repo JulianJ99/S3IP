@@ -1,13 +1,15 @@
 <template>
     <ul v-for="post in posts" :key="post.id">
-    
+    <th>
+
+    </th>
         <table cellpadding="0" cellspacing="0" class="center">
         <tr>
           <td style="width: 150px">{{post.username}}</td>
         </tr>
 
         <tr>
-          <td style="width: 150px"><img :src=post.userimage style="max-width:100px"></td>
+          <td style="width: 150px"><img :src=post.userimage style="max-width:100px" alt="User's profile picture"></td>
         </tr>
 
         <tr>
@@ -16,7 +18,7 @@
 
         <tr>
           <td style="width: 150px">
-            <iframe :src=post.song width="250" height="80" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe :src=post.song width="250" height="80" allowtransparency="true" allow="encrypted-media" title="spotify link"></iframe>
           </td>
         </tr>
     </table>

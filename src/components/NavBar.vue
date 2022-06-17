@@ -1,4 +1,5 @@
 <template>
+          <ul>
             <li v-if="!isAuthenticated && !isLoading" class="item">
               <button
                 id="qsLoginBtn"
@@ -23,15 +24,12 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">{{ user.name }}</div>
-                <router-link to="/profile" class="dropdown-item dropdown-profile">
-                  <font-awesome-icon class="mr-3" icon="user" />Profile
-                </router-link>
                 <a id="qsLogoutBtn" href="#" class="dropdown-item" @click.prevent="logout">
                   <font-awesome-icon class="mr-3" icon="power-off" />Log out
                 </a>
               </div>
             </li>
-
+          </ul>
           <br />
 </template>
 
